@@ -356,5 +356,26 @@ Study Kasus ini dibuat untuk mengelola ketidakhadiran pegawai dengan menggunakan
     ```
 
     <h2>Langkah 5: <i>Terapkan polimorfisme untuk minimal 2 peran sesuai studi kasus</i></h2>
-    2 peran sebagai Pimpinan dan Pegawai, Pimpinan bisa melihat Laporan Ketidakhadiran Pegawai yang disetujui maupun tidak sedangkan Pegawai hanya bisa melihat Data Ketidakhadiran Pegawai yang telah disetujui saja 
+    2 peran sebagai Pimpinan dan Pegawai, Pimpinan bisa melihat Laporan Ketidakhadiran Pegawai yang disetujui maupun tidak disetujui sedangkan Pegawai hanya bisa melihat Data Ketidakhadiran Pegawai yang telah disetujui saja sesuai dengan keperluan izin 
+
+- Tampilan Role Pimpinan
+    <img src = 'https://github.com/user-attachments/assets/903549f0-5f84-445a-9567-aa58d74d85f1'>
+
+- Tampilan Role Pegawai
+  Tampilan Data izin sakit pegawai
+  <img src ='https://github.com/user-attachments/assets/5099de45-674e-4021-91cf-b95e3e6f6f6d'>
+
+ - Tampilan Data izin cuti pegawai
+      <img src ='https://github.com/user-attachments/assets/d652d452-09d2-4ae6-9387-00d720bf8eb3'>
+
+ - Tampilan Data izin khusus pegawai
+      <img src ='https://github.com/user-attachments/assets/a50fb870-10a4-4473-9f02-b57415351a2a'>
+
+
+  
+
+
+  
+
+
     
