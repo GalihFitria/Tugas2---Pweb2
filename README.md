@@ -23,42 +23,114 @@ Study Kasus ini dibuat untuk mengelola ketidakhadiran pegawai dengan menggunakan
 
 <hr>
 
-<h2> Langkah 1 </h2>
-<b><i>Membuat View berbasis OOP, dengan mengambil data dari database MySQL</i></b>
+<h2> Langkah 1: <i>Membuat View berbasis OOP, dengan mengambil data dari database MySQL</i></h2> 
 
 - Membuat Database terlebih dahulu dengan nama tabel izin_ketidakhadiran_pegawai dari ERD dibawah ini
 <img src ='https://github.com/user-attachments/assets/d4a89a08-724a-45c9-baba-bd45b2aea19a'>
 
 <img src ='https://github.com/user-attachments/assets/e8b20110-bd66-46ad-a9c5-15bd1367f280'>
 
+- Membuat View menggunakan Bootstrap
+
+    ```php
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <title>Kelola Kehadiran</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <style>
+            /* Warna latar belakang halaman */
+    
+            /* Navbar kustom dengan warna */
+            .navbar-custom {
+                background-color: #008080;
+                /* Teal */
+            }
+    
+            /* Gaya untuk teks utama di bagian tengah */
+            .hero-text {
+                color: #ffffff;
+                background-color: #008080;
+                /* Teal */
+                padding: 40px;
+                border-radius: 10px;
+                text-align: center;
+                margin-top: 50px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            }
+    
+            /* Gaya untuk container */
+            .container {
+                padding: 20px;
+            }
+    
+            /* Gaya untuk judul */
+            h2 {
+                color: #008080;
+            }
+        </style>
+    </head>
+    
+    <body>
+    
+        <!-- Menyertakan file 'nav.php' untuk menampilkan navigasi navbar -->
+        <?php include 'nav.php'; ?>
+    
+        <!-- Hero text untuk memberikan tulisan di bagian tengah -->
+        <div class="container">
+            <div class="text">
+                <h1>
+                    <center>SELAMAT DATANG DI WEBSITE KETIDAKHADIRAN PEGAWAI</center>
+                </h1><br>
+                <h1>
+                    <center>Kelola Ketidakhadiran Anda dengan Mudah</center>
+                </h1>
+                <h3>
+                    <center>Sistem absensi pegawai kami memudahkan Anda dalam mengelola cuti, izin, dan kehadiran dengan lebih efisien dan terstruktur.</center>
+                </h3>
+            </div>
+        </div>
+    
+    </body>
+    
+    </html>
+    <?
+    ```
+
+
+  
 - Mengambil Data dari database izin_ketidakhadiran_pegawai
 
-```php
-<?php
-// Memasukkan file database.php agar class Database dapat digunakan
-require 'database.php';
-
-// Membuat class IzinSakit yang merupakan turunan dari class Database
-class IzinSakit extends Database
-{
-    // Constructor yang memanggil constructor dari class induk (Database)
-    public function __construct()
+     ```php
+    <?php
+    // Memasukkan file database.php agar class Database dapat digunakan
+    require 'database.php';
+    
+    // Membuat class IzinSakit yang merupakan turunan dari class Database
+    class IzinSakit extends Database
     {
-        parent::__construct(); // Memanggil constructor dari parent (Database)
+        // Constructor yang memanggil constructor dari class induk (Database)
+        public function __construct()
+        {
+            parent::__construct(); // Memanggil constructor dari parent (Database)
+        }
+    
+        // Fungsi untuk menampilkan data izin dengan keperluan 'Sakit' yang diusulkan oleh 'Galih'
+        public function tampilData()
+        {
+            // Query untuk mengambil data izin dengan keperluan 'Sakit' dan nama_pengusul 'Galih'
+            $sql = "SELECT * FROM izin_ketidakhadiran_pegawai WHERE keperluan = 'Sakit' and nama_pengusul ='Galih'";
+    
+            // Mengembalikan hasil query
+            return $this->koneksi->query($sql);
+        }
     }
-
-    // Fungsi untuk menampilkan data izin dengan keperluan 'Sakit' yang diusulkan oleh 'Galih'
-    public function tampilData()
-    {
-        // Query untuk mengambil data izin dengan keperluan 'Sakit' dan nama_pengusul 'Galih'
-        $sql = "SELECT * FROM izin_ketidakhadiran_pegawai WHERE keperluan = 'Sakit' and nama_pengusul ='Galih'";
-
-        // Mengembalikan hasil query
-        return $this->koneksi->query($sql);
-    }
-}
-?>
-```
+    ?>
+     ```
 <h2> Langkah 2 </h2>
 <b><i>Gunakan _construct sebagai link ke database</i></b>
 
