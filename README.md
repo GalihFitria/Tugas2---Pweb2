@@ -100,6 +100,9 @@ Study Kasus ini dibuat untuk mengelola ketidakhadiran pegawai dengan menggunakan
     </html>
     <?
     ```
+<h2>Output</h2>
+<img src ='https://github.com/user-attachments/assets/9bf27322-a36b-45bf-9bc7-6fed1594798a'>
+
 
 - Mengambil Data dari database izin_ketidakhadiran_pegawai
 
