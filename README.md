@@ -8,7 +8,7 @@
 4. Membuat kelas turunan menggunakan konsep pewarisan
 5. Terapkan polimorfisme untuk minimal 2 peran sesuai studi kasus
 ### Study Kasus: Izin Ketidakhadiran Pegawai
-Study Kasus ini dibuat untuk mengelola ketidakhadiran pegawai dengan menggunakan konsep Pemrograman Berorientasi Objek (OOP) dan MySQL sebagai database. Aplikasi ini memanfaatkan konsep OOP seperti enkapsulasi, pewarisan, dan polimorfisme, serta berfokus pada pengelolaan izin ketidakhadiran pegawai untuk berbagai kategori seperti izin sakit, cuti, dan izin khusus.
+Study Kasus ini dibuat untuk mengelola ketidakhadiran pegawai dengan menggunakan konsep Pemrograman Berorientasi Objek (OOP) dan MySQL sebagai database. Website ini memanfaatkan konsep OOP seperti enkapsulasi, pewarisan, dan polimorfisme, serta berfokus pada pengelolaan izin ketidakhadiran pegawai untuk berbagai kategori seperti izin sakit, cuti, dan izin khusus.
 
 ### Struktur Proyek
 - database.php: Mengelola koneksi ke database.
