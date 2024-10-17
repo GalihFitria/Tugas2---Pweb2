@@ -185,16 +185,176 @@ Study Kasus ini dibuat untuk mengelola ketidakhadiran pegawai dengan menggunakan
     ?>
   ```
 
-<h2> Langkah 2 </h2>
-<b><i>Gunakan _construct sebagai link ke database</i></b>
+<h2> Langkah 2: <i> Gunakan _construct sebagai link ke database</i> </h2>
 
-```php
-<?php
-    // Constructor yang memanggil constructor dari class induk (Database)
-    public function __construct()
+- Constract pada class Database digunakan untuk menginisialisasi dan menghubungkan koneksi ke database
+  
+    ```php
+    <?php
+    class Database
     {
-        parent::__construct(); // Memanggil constructor dari parent (Database)
-    }
+    ....
+        // Constructor yang memanggil constructor dari class induk (Database)
+        public function __construct()
+        {
+            parent::__construct(); // Memanggil constructor dari parent (Database)
+        }
+    
+    ?>
+    ```
+- Constract pada class Sakit digunakan untuk menginisialisasi dan menghubungkan koneksi dengan class Database
 
-?>
-```
+    ```php
+    <?php
+    class IzinSakit extends Database
+    {
+        // Constructor yang memanggil constructor dari class induk (Database)
+        public function __construct()
+        {
+            parent::__construct(); // Memanggil constructor dari parent (Database)
+        }
+    ?>
+    ```
+
+- Constract pada class Cuti digunakan untuk menginisialisasi dan menghubungkan koneksi dengan class Database
+
+    ```php
+    <?php
+    class IzinCuti extends Database
+    {
+        // Constructor yang memanggil constructor dari class induk (Database)
+        public function __construct()
+        {
+            parent::__construct(); // Memanggil constructor dari parent (Database)
+        }
+    ?>
+    ```
+
+- Constract pada class Khusus digunakan untuk menginisialisasi dan menghubungkan koneksi dengan class Database
+
+    ```php
+    <?php
+    class IzinKhusus extends Database
+    {
+        // Constructor yang memanggil constructor dari class induk (Database)
+        public function __construct()
+        {
+            parent::__construct(); // Memanggil constructor dari parent (Database)
+        }
+    
+    ?>
+    ```
+
+    <h2> Langkah 3: <i> Terapkan enkapsulasi sesuai logika studi kasus</i> </h2>
+    
+    Penerapan Enkapsulasi: Atribut dan metode yang sensitif dibungkus dalam kelas agar tidak dapat diakses langsung dari luar.
+
+    ```php
+    <?php
+    class Database
+    {
+        // Atribut atau Properti untuk menyimpan informasi host, username, password, dan nama database
+        private $host = "localhost";
+        private $username = "root";
+        private $pass = "";
+        private $dbname = "izin_ketidakhadiran_pegawai";
+    
+        // Atribut atau Properti yang akan digunakan untuk menyimpan koneksi ke database
+        protected $koneksi;
+    ?>
+    ```
+
+     <h2> Langkah 4: <i>Membuat kelas turunan menggunakan konsep pewarisan</i> </h2>
+
+- Membuat kelas turunan dari Database yaitu sakit, cuti dan khusus. berikut script lengkap dari class Sakit
+
+     ```php
+    <?php
+    // Memasukkan file database.php agar class Database dapat digunakan
+    require 'database.php';
+    
+    // Membuat class IzinSakit yang merupakan turunan dari class Database
+    class IzinSakit extends Database
+    {
+        // Constructor yang memanggil constructor dari class induk (Database)
+        public function __construct()
+        {
+            parent::__construct(); // Memanggil constructor dari parent (Database)
+        }
+    
+        // Fungsi untuk menampilkan data sakit yang telah disetujui
+        public function tampilData()
+        {
+            // Query untuk mengambil data izin dengan keperluan 'Sakit' dan putusannya 'Disetujui'
+            $sql =
+                "SELECT * FROM izin_ketidakhadiran_pegawai WHERE keperluan = 'Sakit' and putusan = 'Disetujui'";
+    
+            // Mengembalikan hasil query
+            return $this->koneksi->query($sql);
+        }
+    }
+    ?>
+    ```
+
+- Membuat kelas turunan dari Database yaitu sakit, cuti dan khusus. berikut script lengkap dari class Cuti
+
+    ```php
+    <?php
+    // Memasukkan file database.php agar class Database dapat digunakan
+    require 'database.php';
+    
+    // Membuat class IzinCuti yang merupakan turunan dari class Database
+    class IzinCuti extends Database
+    {
+        // Constructor yang memanggil constructor dari class induk (Database)
+        public function __construct()
+        {
+            parent::__construct(); // Memanggil constructor dari parent (Database)
+        }
+    
+        // Fungsi untuk menampilkan data cuti yang telah disetujui
+        public function tampilData()
+        {
+            // Query untuk mengambil data izin dengan keperluan 'Cuti', dan status 'Disetujui'
+            $sql = "SELECT * FROM izin_ketidakhadiran_pegawai WHERE keperluan = 'Cuti' AND putusan = 'Disetujui'";
+    
+            // Mengembalikan hasil query
+            return $this->koneksi->query($sql);
+        }
+    }
+    ?>
+    ```
+
+- Membuat kelas turunan dari Database yaitu sakit, cuti dan khusus. berikut script lengkap dari class Khusus
+
+    ```php
+    <?php
+    // Memasukkan file database.php agar class Database dapat digunakan
+    require 'database.php';
+    
+    // Membuat class IzinKhusus yang merupakan turunan dari class Database
+    class IzinKhusus extends Database
+    {
+        // Constructor yang memanggil constructor dari class induk (Database)
+        public function __construct()
+        {
+            parent::__construct(); // Memanggil constructor dari parent (Database)
+        }
+    
+        // Fungsi untuk menampilkan data izin khusus yang telah disetujui
+        public function tampilData()
+        {
+            // Query untuk mengambil data izin dengan keperluan 'Terlambat' dan status 'Disetujui'
+            $sql =
+                "SELECT * FROM izin_ketidakhadiran_pegawai WHERE keperluan = 'Terlambat' and putusan = 'Disetujui'";
+    
+            // Mengembalikan hasil query
+            return $this->koneksi->query($sql);
+        }
+    }
+    ?>
+    ```
+
+    <h2>Langkah 5: <i>Terapkan polimorfisme untuk minimal 2 peran sesuai studi kasus</i></h2>
+    2 peran sebagai Pimpinan dan Pegawai, Pimpinan bisa melihat Laporan Ketidakhadiran Pegawai yang disetujui maupun tidak sedangkan Pegawai hanya bisa melihat Data Ketidakhadiran Pegawai yang telah disetujui saja 
+    
