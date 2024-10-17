@@ -16,7 +16,10 @@ Study Kasus ini dibuat untuk mengelola ketidakhadiran pegawai dengan menggunakan
 - khusus.php: Kelas untuk mengelola izin khusus pegawai.
 - sakit.php: Kelas untuk mengelola izin sakit pegawai.
 - nav.php: Menyediakan navigasi antar halaman.
-- index.php: Halaman utama untuk menampilkan data izin pegawai.
+- index.php: Halaman utama untuk menampilkan seluruh data ketidakhadiran pegawai.
+- tampil_cuti.php: Halaman utama untuk menampilkan data izin cuti pegawai.
+- tampil_sakit.php: Halaman utama untuk menampilkan data izin sakit pegawai.
+- tampil_khusus.php: Halaman utama untuk menampilkan data izin khusus (terlambat) pegawai.
 
 <hr>
 
